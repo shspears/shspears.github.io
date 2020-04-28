@@ -1,1 +1,254 @@
 Hello World
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=None">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #f8f8f8; }
+body .c { color: #408080; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #008000; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+body .cp { color: #BC7A00 } /* Comment.Preproc */
+body .c1 { color: #408080; font-style: italic } /* Comment.Single */
+body .cs { color: #408080; font-style: italic } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #008000 } /* Keyword.Pseudo */
+body .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #B00040 } /* Keyword.Type */
+body .m { color: #666666 } /* Literal.Number */
+body .s { color: #BA2121 } /* Literal.String */
+body .na { color: #7D9029 } /* Name.Attribute */
+body .nb { color: #008000 } /* Name.Builtin */
+body .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+body .no { color: #880000 } /* Name.Constant */
+body .nd { color: #AA22FF } /* Name.Decorator */
+body .ni { color: #999999; font-weight: bold } /* Name.Entity */
+body .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+body .nf { color: #0000FF } /* Name.Function */
+body .nl { color: #A0A000 } /* Name.Label */
+body .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+body .nt { color: #008000; font-weight: bold } /* Name.Tag */
+body .nv { color: #19177C } /* Name.Variable */
+body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mf { color: #666666 } /* Literal.Number.Float */
+body .mh { color: #666666 } /* Literal.Number.Hex */
+body .mi { color: #666666 } /* Literal.Number.Integer */
+body .mo { color: #666666 } /* Literal.Number.Oct */
+body .sb { color: #BA2121 } /* Literal.String.Backtick */
+body .sc { color: #BA2121 } /* Literal.String.Char */
+body .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #BA2121 } /* Literal.String.Double */
+body .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #BA2121 } /* Literal.String.Heredoc */
+body .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+body .sx { color: #008000 } /* Literal.String.Other */
+body .sr { color: #BB6688 } /* Literal.String.Regex */
+body .s1 { color: #BA2121 } /* Literal.String.Single */
+body .ss { color: #19177C } /* Literal.String.Symbol */
+body .bp { color: #008000 } /* Name.Builtin.Pseudo */
+body .vc { color: #19177C } /* Name.Variable.Class */
+body .vg { color: #19177C } /* Name.Variable.Global */
+body .vi { color: #19177C } /* Name.Variable.Instance */
+body .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;string&gt;</span>
+<span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+<span style="color: #BC7A00">#include &lt;vector&gt;</span>
+<span style="color: #BC7A00">#include &lt;sstream&gt;</span>
+<span style="color: #BC7A00">#include &lt;cstdio&gt;</span>
+
+<span style="color: #BC7A00">#include &lt;chrono&gt;</span>
+<span style="color: #BC7A00">#include &lt;memory&gt;</span>
+
+<span style="color: #BC7A00">#include &quot;rclcpp/rclcpp.hpp&quot;</span>
+<span style="color: #BC7A00">#include &quot;std_msgs/msg/string.hpp&quot;</span>
+<span style="color: #BC7A00">#include &quot;sensor_msgs/msg/nav_sat_fix.hpp&quot;</span>
+<span style="color: #BC7A00">#include &quot;sensor_msgs/msg/nav_sat_status.hpp&quot;</span>
+
+
+<span style="color: #BC7A00">#include &quot;../include/serial/serial.h&quot;</span>
+
+<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> std<span style="color: #666666">::</span>chrono_literals;
+
+<span style="color: #408080; font-style: italic">/* This example creates a subclass of Node and uses std::bind() to register a</span>
+<span style="color: #408080; font-style: italic"> * member function as a callback from the timer. */</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">serialGPS</span> <span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">public</span> rclcpp<span style="color: #666666">::</span>Node
+{
+
+  std<span style="color: #666666">::</span>unique_ptr<span style="color: #666666">&lt;</span>sensor_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>NavSatFix<span style="color: #666666">&gt;</span> fix_ <span style="color: #666666">=</span> nullptr;
+
+  std_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>Header header_;
+  rclcpp<span style="color: #666666">::</span>TimerBase<span style="color: #666666">::</span>SharedPtr timer_;
+  rclcpp<span style="color: #666666">::</span>Publisher<span style="color: #666666">&lt;</span>std_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>String<span style="color: #666666">&gt;::</span>SharedPtr publisher_;
+  rclcpp<span style="color: #666666">::</span>Publisher<span style="color: #666666">&lt;</span>sensor_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>NavSatFix<span style="color: #666666">&gt;::</span>SharedPtr nav_pub_;
+
+  serial<span style="color: #666666">::</span>Serial serial_;
+  <span style="color: #B00040">bool</span> pubNavSat;
+
+
+<span style="color: #A0A000">public:</span>
+  serialGPS()
+  <span style="color: #666666">:</span> Node(<span style="color: #BA2121">&quot;serialGPS&quot;</span>), pubNavSat(<span style="color: #008000">false</span>), serial_(<span style="color: #BA2121">&quot;/dev/ttyUSB0&quot;</span>, <span style="color: #666666">4800</span>, serial<span style="color: #666666">::</span>Timeout<span style="color: #666666">::</span>simpleTimeout(<span style="color: #666666">1000</span>))
+  {
+
+    <span style="color: #B00040">rmw_qos_profile_t</span> navsat_profile <span style="color: #666666">=</span> rmw_qos_profile_default;
+    <span style="color: #B00040">rmw_qos_profile_t</span> gps_profile <span style="color: #666666">=</span> rmw_qos_profile_sensor_data;
+
+    <span style="color: #008000; font-weight: bold">auto</span> navqos <span style="color: #666666">=</span> rclcpp<span style="color: #666666">::</span>QoS(
+                    rclcpp<span style="color: #666666">::</span>QoSInitialization(
+                      navsat_profile.history,
+                      navsat_profile.depth
+                    ),
+                    navsat_profile
+                  );
+    <span style="color: #008000; font-weight: bold">auto</span> gpsqos <span style="color: #666666">=</span> rclcpp<span style="color: #666666">::</span>QoS(
+                    rclcpp<span style="color: #666666">::</span>QoSInitialization(
+                      gps_profile.history,
+                      gps_profile.depth
+                      ),
+                  gps_profile);
+
+    <span style="color: #408080; font-style: italic">//rclcpp::QoS qos(rclcpp::KeepLast(7));</span>
+    
+    publisher_ <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>create_publisher<span style="color: #666666">&lt;</span>std_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>String<span style="color: #666666">&gt;</span>(<span style="color: #BA2121">&quot;GPS_Data&quot;</span>, gpsqos);
+    nav_pub_ <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>create_publisher<span style="color: #666666">&lt;</span>sensor_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>NavSatFix<span style="color: #666666">&gt;</span>(<span style="color: #BA2121">&quot;NavSatFix&quot;</span>, navqos);
+
+    <span style="color: #408080; font-style: italic">//should this be initialised with the constructor?</span>
+    
+
+    timer_ <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>create_wall_timer(
+      <span style="color: #666666">500</span>ms, std<span style="color: #666666">::</span>bind(<span style="color: #666666">&amp;</span>serialGPS<span style="color: #666666">::</span>timer_callback, <span style="color: #008000; font-weight: bold">this</span>));
+
+    RCLCPP_INFO(<span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>get_logger(), <span style="color: #BA2121">&quot;Is the serial port open?&quot;</span>);
+    <span style="color: #008000; font-weight: bold">if</span>(serial_.isOpen())
+      RCLCPP_INFO(get_logger(), <span style="color: #BA2121">&quot;Yes.&quot;</span>);
+    <span style="color: #008000; font-weight: bold">else</span>
+      <span style="color: #0000FF">RCLCPP_INFO</span>(get_logger(), <span style="color: #BA2121">&quot;No.&quot;</span>);
+
+
+
+  }
+
+<span style="color: #A0A000">private:</span>
+  <span style="color: #B00040">void</span> timer_callback()
+  {
+    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">&quot;Callback &quot;</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    fix_ <span style="color: #666666">=</span> std<span style="color: #666666">::</span>make_unique<span style="color: #666666">&lt;</span>sensor_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>NavSatFix<span style="color: #666666">&gt;</span>();
+
+    <span style="color: #008000; font-weight: bold">auto</span> message <span style="color: #666666">=</span> std_msgs<span style="color: #666666">::</span>msg<span style="color: #666666">::</span>String();
+
+    std<span style="color: #666666">::</span>string gpsMessage <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;&quot;</span>;
+    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span> gpsData;
+    processGPS(gpsMessage, gpsData);
+
+    message.data <span style="color: #666666">=</span> gpsMessage;
+    <span style="color: #408080; font-style: italic">//if(message.data != &quot;&quot;)</span>
+    <span style="color: #408080; font-style: italic">//{</span>
+      RCLCPP_INFO(<span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>get_logger(), <span style="color: #BA2121">&quot;Publishing: &#39;%s&#39;&quot;</span>, message.data.c_str());
+      publisher_<span style="color: #666666">-&gt;</span>publish(std<span style="color: #666666">::</span>move(message));
+    <span style="color: #408080; font-style: italic">//}</span>
+    <span style="color: #008000; font-weight: bold">if</span>(pubNavSat)
+    {
+      RCLCPP_INFO(<span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>get_logger(), <span style="color: #BA2121">&quot;Publishing: NavSatFix Message&quot;</span>);
+      nav_pub_<span style="color: #666666">-&gt;</span>publish(std<span style="color: #666666">::</span>move(fix_));
+      pubNavSat <span style="color: #666666">=</span> <span style="color: #008000">false</span>;
+    }
+  }
+
+
+
+
+
+  <span style="color: #B00040">void</span> processGPS(std<span style="color: #666666">::</span>string <span style="color: #666666">&amp;</span>gpsMsg, std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span> <span style="color: #666666">&amp;</span>gpsData)
+  {
+
+    gpsMsg <span style="color: #666666">=</span> serial_.readline();
+
+    std<span style="color: #666666">::</span>stringstream ss(gpsMsg);
+    <span style="color: #408080; font-style: italic">//std::vector&lt;std::string&gt; gpsData;</span>
+
+    <span style="color: #008000; font-weight: bold">while</span>( ss.good() )
+    {
+      std<span style="color: #666666">::</span>string substr;
+      std<span style="color: #666666">::</span>getline( ss, substr, <span style="color: #BA2121">&#39;,&#39;</span>);
+      gpsData.push_back( substr );
+    }
+
+    <span style="color: #008000; font-weight: bold">if</span>(gpsData[<span style="color: #666666">0</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;$GPGGA&quot;</span>)
+    {
+      <span style="color: #B00040">double</span> temp;
+      try
+      {
+        fix_<span style="color: #666666">-&gt;</span>latitude <span style="color: #666666">=</span> std<span style="color: #666666">::</span>stod(gpsData[<span style="color: #666666">2</span>]);
+        temp <span style="color: #666666">=</span> std<span style="color: #666666">::</span>stod(gpsData[<span style="color: #666666">4</span>]);
+      }<span style="color: #008000; font-weight: bold">catch</span>(std<span style="color: #666666">::</span>exception e) {std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> e.what();}
+      
+      <span style="color: #008000; font-weight: bold">if</span>(gpsData[<span style="color: #666666">5</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;W&quot;</span>)
+        temp <span style="color: #666666">=</span> temp <span style="color: #666666">*</span>(<span style="color: #666666">-1</span>);
+      fix_<span style="color: #666666">-&gt;</span>longitude <span style="color: #666666">=</span> temp;
+    }
+    <span style="color: #008000; font-weight: bold">else</span>
+    {
+      fix_<span style="color: #666666">-&gt;</span>latitude <span style="color: #666666">=</span> <span style="color: #666666">2</span>;
+      fix_<span style="color: #666666">-&gt;</span>longitude <span style="color: #666666">=</span> <span style="color: #666666">-6</span>;
+    }
+
+    fix_<span style="color: #666666">-&gt;</span>header.stamp <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>get_clock()<span style="color: #666666">-&gt;</span>now();
+    fix_<span style="color: #666666">-&gt;</span>header.frame_id <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;serial gps&quot;</span>;
+
+    fix_<span style="color: #666666">-&gt;</span>status.status <span style="color: #666666">=</span> <span style="color: #666666">0</span>;
+    fix_<span style="color: #666666">-&gt;</span>status.service <span style="color: #666666">=</span> <span style="color: #666666">1</span>;
+
+
+    fix_<span style="color: #666666">-&gt;</span>altitude <span style="color: #666666">=</span> <span style="color: #666666">0</span>;
+    fix_<span style="color: #666666">-&gt;</span>position_covariance <span style="color: #666666">=</span> {<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>,<span style="color: #666666">0</span>};
+    fix_<span style="color: #666666">-&gt;</span>position_covariance_type <span style="color: #666666">=</span> <span style="color: #666666">0</span>;
+    pubNavSat <span style="color: #666666">=</span> <span style="color: #008000">true</span>;
+
+
+  }
+
+};
+
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>(<span style="color: #B00040">int</span> argc, <span style="color: #B00040">char</span> <span style="color: #666666">*</span> argv[])
+{
+  rclcpp<span style="color: #666666">::</span>init(argc, argv);
+  rclcpp<span style="color: #666666">::</span>spin(std<span style="color: #666666">::</span>make_shared<span style="color: #666666">&lt;</span>serialGPS<span style="color: #666666">&gt;</span>());
+  rclcpp<span style="color: #666666">::</span>shutdown();
+  <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
+}
+</pre></div>
+</body>
+</html>
+
