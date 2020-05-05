@@ -5,8 +5,11 @@ date: '2020-05-05 11:30'
 ---
 
 # This is a basic ROS2 Node using the C++ ROS Client Library
-- The code can be found [here](#code) .
-- The CMakeList file can be found [here](#cmakelist) .
+- The code can be found [here](#code).
+- The CMakeList file can be found [here](#cmakelist).
+- Useful Links for this project can be found [here](#links)
+---
+
 > The purpose is to connect to a GPS sensor (which is connected to a RS232-USB converter that is connected to the /dev/ttyUSB0 port)
 > I was just trying to use the [serial driver](https://github.com/RoverRobotics-forks/serial-ros2) provided by WJWood.
 > It took a little _Friggin_ around with the CMakeList.txt file to get it to compile properly. I will add the contents of that file later
@@ -296,3 +299,7 @@ ament_package()
 - > And Don't forget to source your workspace after successful compilation
 
       . /home/<username>/<ROS2_workspace>/install/setup.bash
+      
+      
+# Links
+- a ROS1 [gps package](https://github.com/swri-robotics/gps_umd/blob/dashing-devel/gpsd_client/src/client.cpp)
