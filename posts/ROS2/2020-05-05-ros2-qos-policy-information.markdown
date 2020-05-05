@@ -12,6 +12,7 @@ date: "2020-05-05 14:59"
 - [Definitions of policies](#some-useful-qos-parameter-definitions)
 - [Predefined QoS Policies](#predefined-qos-policies)
 - [Examples](#code-examples)
+- [References](#references)
 
 
 > - Some information that is contained here was taken from [here](https://surfertas.github.io/ros2/2019/08/17/ros2-qos.html).
@@ -170,3 +171,12 @@ nav_pub_ = this->create_publisher<sensor_msgs::msg::NavSatFix>("NavSatFix", navq
 
 
 ```
+
+# References
+    1. https://github.com/ros2/demos/blob/master/image_tools/src/cam2image.cpp
+    2. http://design.ros2.org/articles/qos.html1
+    3. https://github.com/ros2/demos/blob/master/image_tools/src/cam2image.cpp
+    4. https://github.com/ros2/rmw/blob/master/rmw/include/rmw/qos_profiles.h
+    5. https://github.com/ros2/rmw/blob/master/rmw/include/rmw/types.h
+    6. https://answers.ros.org/question/298594/how-does-ros2-select-the-default-qos-profile/
+    7. https://docs.ros2.org/latest/api/rclcpp/qos_8hpp_source.html
