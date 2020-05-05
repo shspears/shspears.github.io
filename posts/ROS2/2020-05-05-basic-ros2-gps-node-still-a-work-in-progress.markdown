@@ -13,7 +13,7 @@ date: '2020-05-05 11:30'
 
 
 # Code
-```cpp
+```cpp class:"lineNo"
 #include <string>
 #include <iostream>
 #include <vector>
