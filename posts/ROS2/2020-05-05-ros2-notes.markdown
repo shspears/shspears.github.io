@@ -10,9 +10,6 @@ date: '2020-05-05 11:16'
 
 ---
 
-If you want to navigate to a [test](#test)
-
-
 ## ROS2 Useful Links
 >
 - [ROS2 install guide - Build from Source](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Development-Setup/)
@@ -41,4 +38,4 @@ Check to see if ROS is properly added to the PATH
 
 ---
 
-### test
+
