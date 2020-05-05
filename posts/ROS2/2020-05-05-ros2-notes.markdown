@@ -1,0 +1,44 @@
+---
+layout: post
+title: ROS2_Notes
+date: '2020-05-05 11:16'
+---
+
+---
+
+# This is a page for general notes on ROS2
+
+---
+
+If you want to navigate to a [test](#test)
+
+
+## ROS2 Useful Links
+>
+- [ROS2 install guide - Build from Source](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Development-Setup/)
+
+- [Awesome ROS2 - So many useful links here!](https://github.com/fkromer/awesome-ros2)
+
+>
+
+
+
+## ROS2 Cheat Sheet
+![Cheet Sheet](https://shspears.github.io/images/ros2_cheatsheet_1.png "ROS2 Cheet Sheet")
+![Cheet Sheet](https://shspears.github.io/images/ros2_cheatsheet_2.png "ROS2 Cheet Sheet")
+
+---
+ # Useful commandline interface commands for Linux
+
+
+Useful for seeing all ROS environment variables to make sure things are installed properly
+
+      printenv | grep ROS
+
+Check to see if ROS is properly added to the PATH
+
+      echo $PATH | grep ROS
+
+---
+
+### test
