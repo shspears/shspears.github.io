@@ -5,11 +5,11 @@ date: '2020-05-05 11:30'
 ---
 
 # This is a basic ROS2 Node using the C++ ROS Client Library
-- The code can be found [here](#code).
-- The CMakeList file can be found [here](#cmakelist).
+- The code can be found [here](#code) .
+- The CMakeList file can be found [here](#cmakelist) .
 > The purpose is to connect to a GPS sensor (which is connected to a RS232-USB converter that is connected to the /dev/ttyUSB0 port)
 > I was just trying to use the [serial driver](https://github.com/RoverRobotics-forks/serial-ros2) provided by WJWood.
-> It took a little *Friggin* around with the CMakeList.txt file to get it to compile properly. I will add the contents of that file later
+> It took a little _Friggin_ around with the CMakeList.txt file to get it to compile properly. I will add the contents of that file later
 
 
 # Code
@@ -38,6 +38,8 @@ using namespace std::chrono_literals;
 
 class serialGPS : public rclcpp::Node
 {
+
+  //initialize all class members
   std::unique_ptr<sensor_msgs::msg::NavSatFix> fix_ = nullptr;
 
   std_msgs::msg::Header header_;
@@ -51,6 +53,7 @@ class serialGPS : public rclcpp::Node
 
 public:
   serialGPS()
+  //serialGPS Constructor. Initializes the base Node object, serial_port object
   : Node("serialGPS"), pubNavSat(false), serial_("/dev/ttyUSB0", 4800, serial::Timeout::simpleTimeout(1000))
   {
 
@@ -88,6 +91,9 @@ public:
       RCLCPP_INFO(get_logger(), "Yes.");
     else
       RCLCPP_INFO(get_logger(), "No.");
+
+      //std::cout << "Is the serialport open? " << serial_.isOpen()? "Yes\n" : "No\n";
+
   }
 
 private:
@@ -171,7 +177,7 @@ private:
 };
 
 
-                    
+
 
 int main(int argc, char * argv[])
 {
@@ -255,4 +261,38 @@ install(FILES include/serial/serial.h include/serial/v8stdint.h
 ament_package()
 
 ```
----
+
+> With regards to the CMakeList.txt file, I needed to change a few things;
+
+
+ - > The following is used for local dependancies (ie, header files that are part of the package)
+   > It is relative to the package path (~/home/username/ros2_workspace/src/). It is relative to where the package CMakeList.txt file resides
+
+
+
+        ## Sources
+        ## Add serial library
+        add_library(${PROJECT_NAME}
+            src/serial.cc
+            include/serial/serial.h
+            include/serial/v8stdint.h
+        )
+
+- > Under ##Uncomment for examples, you must add the following line for colcon to build
+
+      ament_target_dependencies(serial_gps rclcpp std_msgs sensor_msgs)
+
+- > In the ##Install Executable subsection, you must include:
+
+      DESTINATION lib/${PROJECT_NAME}
+
+- > Or the *ros2 run* command will not identify the executable within the find_package
+
+
+- > To run colcon on only the serial_gps package, run:
+
+      colcon build --packages-select serial_gps --symlink-install
+
+- > And Don't forget to source your workspace after successful compilation
+
+      . /home/<username>/<ROS2_workspace>/install/setup.bash
