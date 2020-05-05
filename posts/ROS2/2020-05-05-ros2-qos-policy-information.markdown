@@ -45,7 +45,7 @@ typedef struct RMW_PUBLIC_TYPE rmw_qos_profile_t
 ## Some useful QoS parameter Definitions
 
 ---
-###Definitions
+### Definitions
     - History Policy
         - The history policy determines how messages are saved until taken by the reader.
         - KEEP_ALL saves all messages until they are taken.
@@ -62,7 +62,7 @@ typedef struct RMW_PUBLIC_TYPE rmw_qos_profile_t
     - Liveliness Policy
 ---
 
-###Posible values
+### Posible values
 Each of the policies within the rwm_qos_policy_t struct have the following possible options:
 
       - History Policy
