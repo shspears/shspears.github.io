@@ -302,4 +302,4 @@ ament_package()
       
       
 # Links
-- a ROS1 [gps package](https://github.com/swri-robotics/gps_umd/blob/dashing-devel/gpsd_client/src/client.cpp)
+- a ROS1 [gps package](https://github.com/swri-robotics/gps_umd/tree/dashing-devel) along with the [client.cpp](https://github.com/swri-robotics/gps_umd/blob/dashing-devel/gpsd_client/src/client.cpp) code.
