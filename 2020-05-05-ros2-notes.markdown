@@ -10,7 +10,7 @@ date: "2020-05-05 08:59"
 If you want to navigate to a [useful links](#test)
 
 
-##ROS2 Useful Links
+## ROS2 Useful Links
 
 [ROS2 install guide - Build from Source](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Development-Setup/)
 
@@ -21,12 +21,12 @@ If you want to navigate to a [useful links](#test)
 
 
 
-##ROS2 Cheat Sheet
-![Cheet Sheet](/home/spears/atom_projects/atom_ROS2/images/ros2_cheatsheet_1.png "ROS2 Cheet Sheet")
-![Cheet Sheet](/home/spears/atom_projects/atom_ROS2/images/ros2_cheatsheet_2.png "ROS2 Cheet Sheet")
+## ROS2 Cheat Sheet
+![Cheet Sheet](https://shspears.github.io/images/ros2_cheatsheet_1.png "ROS2 Cheet Sheet")
+![Cheet Sheet](https://shspears.github.io/images/ros2_cheatsheet_2.png "ROS2 Cheet Sheet")
 
 ---
- #Useful commandline interface commands for Linux
+ # Useful commandline interface commands for Linux
 
 
 Useful for seeing all ROS environment variables to make sure things are installed properly
@@ -39,7 +39,7 @@ Check to see if ROS is properly added to the PATH
 
 ---
 
-###test
+### test
 
 
 
