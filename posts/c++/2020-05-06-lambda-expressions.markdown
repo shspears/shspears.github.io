@@ -313,7 +313,7 @@ lambda1();
     > This allows the use of lambdas for use with c funtions that require function pointers
 ```c
 atexit([](){std::cout << "Program is exiting" << std::endl; });
-
+```
 ---
 
 ### Generalized capture
