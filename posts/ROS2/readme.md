@@ -9,7 +9,9 @@
 
 - Useful information for [colcon](/posts/ROS2/2020-05-05-colcon-notes.markdown) the ROS2 build application.
 - [QoS Policies](/posts/ROS2/2020-05-05-ros2-qos-policy-information.markdown)
+
 ### Code
+
 - [tutorials](https://index.ros.org/doc/ros2/Tutorials/) are a good place to learn ROS concepts
 - [examples](https://github.com/ros2/examples/tree/master/rclcpp) are intended to be somewhat of a template for your application
 - [demos](https://github.com/ros2/demos) really drive home key concepts and have intermediate programming (c++) concepts
@@ -17,4 +19,5 @@
 
 
 ### Links
+
 - [Awesome ROS2](https://github.com/fkromer/awesome-ros2) is a great resource. More comprehensive than this will ever be!
