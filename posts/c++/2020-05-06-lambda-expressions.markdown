@@ -235,11 +235,14 @@ exception specification - optional ability to use noexcept or noexcept(false)
 
 ##### Capture List
 
-- Summary:
-![CL](https://github.com/shspears/shspears.github.io/blob/master/images/capture_list_summary.PNG)
-
-
 - objects being passed to the Lambda using the [**capture list**]
+- Summary:
+
+
+![CL](https://github.com/shspears/shspears.github.io/blob/master/images/capture_list_summary.PNG)
+---
+
+
 ```cpp
 ...
     //Now, lets use the same function to add an offset to each element in the array
