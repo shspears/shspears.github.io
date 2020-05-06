@@ -9,4 +9,3 @@
 > 1. Try the [tutorials](https://index.ros.org/doc/ros2/Tutorials/).
 > 2. The [examples](https://github.com/ros2/examples/tree/master/rclcpp) have good bare bones code to use as a start to your one applications.
 > 3. [Demos](https://github.com/ros2/demos) do a great job to really get into the details of a particular 'new' feature in ROS2.
----
