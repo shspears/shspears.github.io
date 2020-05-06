@@ -86,7 +86,7 @@ exception specification - optional ability to use noexcept or noexcept(false)
 ```cpp
     auto lambda1 = [](){std::cout << "Hello World" << std::endl; };
 ...
-lambda1();
+    lambda1();
 ```
 
 #### Generic Lambda (C++14)
