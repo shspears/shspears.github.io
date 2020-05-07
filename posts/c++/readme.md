@@ -10,6 +10,6 @@
 
 ---
 
-- Useful [code snippets]()
+- Useful [code snippets](/posts/c++/2020-05-06-code-samples.markdown)
 - useful [libraries]() and [header files]()
 
