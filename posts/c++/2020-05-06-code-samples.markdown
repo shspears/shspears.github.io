@@ -26,7 +26,7 @@ date: "2020-05-06 21:34"
 
 ```cpp
     std::string nmeaStr = serial_.readline();
-    //std::string nmeaStr{"This is a string I want to break into characters
+    //std::string nmeaStr{"This is a string I want to break into characters"};
 
     std::stringstream ss(nmeaStr);
 
