@@ -9,7 +9,7 @@ date: "2020-05-06 21:34"
 >
 > Pretty small right now..
 
-
+- Convert all characters in a string, to [lower case](#lover-case)
 - [Split a string](#split_string) into a vector of characters (strings).
 - Search a [directory](#getdir) and put all file names into a vector of strings.
 - Monitor a directory for newly written and closed files using [inotify](#inotify)
@@ -20,6 +20,20 @@ date: "2020-05-06 21:34"
 
 
 #### General routines
+
+##### Lower Case
+- convert a string to lower case
+
+```cpp
+
+        #include <algorithm>
+        #include <cctype>
+        #include <string>
+
+        std::string data = "Abc";
+        std::transform(data.begin(), data.end(), data.begin(),
+            [](unsigned char c){ return std::tolower(c); });
+```
 
 ##### Split_string
 - a string into vector of strings (characters). GPS parsing, etc.
