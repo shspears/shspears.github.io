@@ -1,0 +1,307 @@
+---
+layout: "post"
+title: "STL"
+date: "2020-05-19 15:44"
+---
+
+# Standard Template Library
+
+> Most of the notes here were taken from Udemy's [Complete Modern C++](https://www.udemy.com/course/beg-modern-cpp/) course, authored by Umar Lone. Great course!
+---
+
+- [Sequence Containers](#sequence-containers)
+- [Associative Containers](#associative-containers)
+- [Unordered Containers](#unordered-containers)
+- [Hash Function](#hash-function)
+- [Container Performance](#container-performance)
+- [Algorithms](#algorithms)
+
+---
+
+- The core of the std library
+- Relies heavily on Templates
+- Core Components
+    - Container Classes, Algorithms, and Iterators
+    - Also inclueds classes for concurrency, random numbers, regular expressions, utilites, etc.
+
+- Why use STL ?
+    - Many core data structures are already implemented (probably better than you could do on your own)
+    - quick and reliable development
+    - lower maintenance
+---
+### Sequence Containers
+![SC](https://github.com/shspears/shspears.github.io/blob/master/images/sequence_containers_stl.PNG)
+> They all have their own header files that need to be included
+- std::array< type >{}
+- std::vector< type >{}
+- - std::deque< type >{} //double ended queue
+- std::list< type >{}
+    - Good for insertions and deletions anywhere in the list (constant time)
+    - No random access
+    - doubly linked list (each node contains two pointers)
+- std::forward_list< type > (since C++11)
+    - singly linked list
+    - smaller memory footprint
+    - does not have .size() supportsefficient for insertion / deletion anywhere in the list
+    - push_front() always added at front
+    - .insert_after(itr, value) //after itr
+    - .erase_after(itr)
+- Size of <int> for each of the following (in bytes):
+    - Array  : 4
+    - Vector : 16
+    - Deque  : 20
+    - list   : 12
+    - fwdList: 8
+
+---
+### Associative Containers
+
+![SMS](https://github.com/shspears/shspears.github.io/blob/master/images/set_multiset.PNG)
+
+
+- std::set< type > / std::multiset< type >
+
+    - stores items in order
+    - .find(value) will set the iterator to point to the value if it is within the set. Otherwise it will point to .end()
+    - set does not allow for duplicates within the binary three
+    - multiset allows for duplicates
+    - .equal_range(value) returns std::pair< type >
+    - *** Use set if you frequently want to search for elements within the container ***
+
+```cpp
+    #include <set>
+    #include <functional> //used for std::greater< type >
+    ...
+    std::set<int> s{2,4,5,6,7,8,9,90,664};
+    //by default it will be in ascending order
+    //std::set<int, std::greater<int>>
+    //that works in descending order
+    auto itr = s.find(9);
+    if(itr != s.end()) //found
+```
+
+- std::map< kType, vType > . / std::multimap< kType, vType >
+    - Also stores as a binary tree
+    - stores std::pair< type > (key and value) instead of just the value
+    - ordered as to the key and not the value
+    - no random access
+    - keys cannot be modified
+    - values can be modified
+    - avoid using subscript for searching - if not there, it will add it with default vType value
+    - multimap does not overload subscript
+    - multimap can have multiple of the same keys
+    - multimap has .equal_range(key)
+
+- Actually std::map< kType, vType, comparitor, allocator >
+
+```cpp
+    std::map<int, std::string> m
+    {
+    //initializer list
+        {1, "blue"},
+        {2, "green"},
+        {3, "yellow"}
+    };
+
+    //insert std::pair<kType, vType>(key, value);
+    m.insert(std::pair<int, std::string>(4, "red"));
+    //Or use std::make_pair(kType,
+    m.insert(std::make_pair(5, "purple"));
+    //random access using subscripts
+    m[0] = "black";
+
+    auto itr = m.begin(); //itr is of type std::pair<int, std::string>
+    *itr++;
+    //the std::pair is comprised of first and second
+    std::cout << itr->first << " : " << itr->second << std::endl;
+    *itr++;
+    std::cout << itr->first << " : " << itr->second << std::endl;
+
+    itr = m.begin();
+    for(const auto &x : m)
+    {
+      std::cout << x.first << " : " << x.second << std::endl;
+    }
+
+    m.erase(0);
+    m.find(3); //if not found, returns m.end()
+
+```
+
+
+---
+### Unordered Containers
+- Improved searches over Associative Containers (but degrades as the Load Factor approaches 1)
+
+![UC](https://github.com/shspears/shspears.github.io/blob/master/images/unordered_containers.PNG)
+
+- unordered_set does not allow duplicates
+- unordered_multiset does allow duplicates
+- Internally implemented as Hash Tables
+- The Hash acts as a key to the value within the Tables
+- two types of Unordered Containers
+    - std::unordered_set - stores values that act as keys for hashing
+    - std::unordered_map - stores pairs (of which, the first is used to compute hash)
+- Cannot modify values through iterators
+- Hash tables are like dynamic arrays, with each element known as a bucket or a slot
+- An element entering the hash table is first passed through a hash function, which computes a hash based on the elements value. The result is a key (or index) of where the element will be stored within the table
+- Sometimes different elements may generate the same hash key. This is referred to as a **Collision**
+- How **Collisions** are handled depends on the Hash Table implementation. Sometimes buckets will become link lists - making the table an array of linked lists. Buckets themselves will simply hold a pointer to the link list.
+- Too many **Collisions** will lead to a degradation in performance.
+- Load factor = # of entries in the table / the capacity of the table.
+- Once the Load Factor reaches a certain value (1), the Hash Table with grow and the hashes for each element will be recomputed.
+
+```cpp
+#include <unordered_set>
+#include <unordered_map>
+...
+    void unSet()
+    {
+        std::unordered_set<std::string> col;
+        //std::unordered_multiset<std::string> col; //allowed duplicates
+        col.insert("red");
+        col.insert("green");
+        col.insert("blue");
+        col.insert("yellow");
+        col.insert("purple");
+        col.insert("orange");
+        col.insert("white");
+
+        for (const auto& x : col)
+        {
+            //print in unspecified order
+            std::cout << "Bucket number: " << col.bucket(x) << " contains : " << x << std::endl;
+        /*
+            Bucket number: 4 contains : green
+            Bucket number: 4 contains : red
+            Bucket number: 5 contains : blue
+            Bucket number: 1 contains : yellow
+            Bucket number: 7 contains : purple
+            Bucket number: 3 contains : orange
+            Bucket number: 6 contains : white
+        */
+        }
+
+        std::cout << "Capacity      : " << col.bucket_count() << std::endl;
+        // Capacity      : 8
+        std::cout << "# of Elements : " << col.size() << std::endl;
+        // # of Elements : 7
+        std::cout << "Load Factor   : " << col.load_factor() << std::endl;
+        // Load Factor   : 0.875
+    }
+
+    void unMap()
+    {
+        std::unordered_map<std::string, std::string> col;
+        //std::unordered_multimap <std::string, std::string> col;
+        col["Batman"] = "Bruce Wayne";
+        col["Superman"] = "Clark Kent";
+        col["Hulk"] = "Bruce Banner";
+
+        for (const auto& x : col)
+        {
+            std::cout << "Bucket number: " << col.bucket(x.first)
+                << " contains : " << x.first << " : " << x.second
+                << std::endl;
+        }
+
+    }
+
+```
+
+
+### Hash function
+- How to create a hash function for a custom object
+- std::hash //C++11
+- generally, for storing user defined types within STL containers, you have to overload the comparrison operators within the users defined class
+- This includes <, >, ==, and !=
+- For unordered Containers you need to create function objects for the following
+    - hashing
+    - an equality function for your type
+```cpp
+  ...
+      class Employee
+    {
+        std::string m_Name;
+        int m_Id;
+    public:
+        Employee(std::string name, int id) : m_Id(id), m_Name(name)
+        {}
+
+        const std::string& getName() const
+        {
+            return m_Name;
+        }
+        const int getId()const
+        {
+            return m_Id;
+        }
+
+    };
+
+    struct EmployeeHash
+    { //Hash Function for user defined class Employee
+        size_t operator()(const Employee& e)const
+        {
+            auto s1 = std::hash<std::string>{}(e.getName());
+            auto s2 = std::hash<int>{}(e.getId());
+            return s1 ^ s2; //xor
+        }
+    };
+
+    struct EmpEquality
+    { //Equality function for user defined class Employee
+        bool operator()(const Employee& e1, const Employee& e2)const
+        {
+            return e1.getId() == e2.getId();
+        }
+    };
+
+    ...
+
+    std::unordered_set<Employee, EmployeeHash, EmpEquality> col;
+
+    col.insert(Employee("Sean", 330));
+    col.insert(Employee("John", 134));
+    col.insert(Employee("Fred", 546));
+    col.insert(Employee("Jack", 433));
+
+    for (const auto &x : col)
+    {
+        std::cout << "Bucket " << col.bucket(x)
+            << " contains Employee: "
+            << x.getName() << " : "
+            << x.getId() << std::endl;
+    }
+```
+
+
+
+### Container Performance
+
+- Complexity
+    - Amount of time taken by an algorithm to run for an input size of n
+    - Big-O notation
+        - O(1) - represents constant time
+        - O(n) - represents linear time
+    - Gives rough idea about performance of an algorithm
+    - Useful for large input size
+
+![BigO](https://github.com/shspears/shspears.github.io/blob/master/images/bigOnotation.jpg)
+
+![bigOG](https://github.com/shspears/shspears.github.io/blob/master/images/bigOgraph.jpg)
+
+![CS](https://github.com/shspears/shspears.github.io/blob/master/images/Complexity_of_ops.PNG)
+
+
+- Summary:
+    - Vector - Use for random access, but not insertion and deletion
+    - Deque - use when elements need to be added / removed from both ends
+    - List - Use if frequent insertions and deletions are required
+    - forward_list - use instead of list for memory constrained systems
+    - Associative Containers - use for lookup / search
+    - Unordered Containers - use if elements do not need to be ordered. Else, use set/map
+
+
+
+### Algorithms
