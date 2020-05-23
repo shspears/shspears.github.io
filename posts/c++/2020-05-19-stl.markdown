@@ -29,12 +29,16 @@ date: "2020-05-19 15:44"
     - quick and reliable development
     - lower maintenance
 ---
-### Sequence Containers
+
 ![SC](https://github.com/shspears/shspears.github.io/blob/master/images/sequence_containers_stl.PNG)
+
+---
+### Sequence Containers
+
 > They all have their own header files that need to be included
 - std::array< type >{}
 - std::vector< type >{}
-- - std::deque< type >{} //double ended queue
+- std::deque< type >{} //double ended queue
 - std::list< type >{}
     - Good for insertions and deletions anywhere in the list (constant time)
     - No random access
