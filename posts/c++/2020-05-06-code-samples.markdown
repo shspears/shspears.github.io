@@ -9,6 +9,8 @@ date: "2020-05-06 21:34"
 >
 > Pretty small right now..
 
+- Calculate [time difference](calculate-time-difference) to execute a piece of code.
+- Display [date and time](date-and-time) of system clock to output stream
 - Convert all characters in a string, to [lower case](#lover-case)
 - [Split a string](#split_string) into a vector of characters (strings).
 - Search a [directory](#getdir) and put all file names into a vector of strings.
