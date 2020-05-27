@@ -21,8 +21,28 @@ date: "2020-05-06 21:34"
 
 #### General routines
 
+##### Calculate time difference
+- Useful function to calculate how long sections of code take to execute
+
+```cpp
+        #include <chrono>
+
+        std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+        std::cout << "Time difference = " 
+                << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() 
+                << "[µs]" << std::endl;
+        std::cout << "Time difference = " 
+                << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() 
+                << "[ns]" << std::endl;
+                
+```
+
 
 ##### Date and Time
+- Using std::chrono to get the system clock's time and display it to an output stream
+
 ```cpp
         #include <chrono>  // chrono::system_clock
         #include <ctime>   // localtime
