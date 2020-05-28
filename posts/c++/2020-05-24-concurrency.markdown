@@ -219,7 +219,7 @@ date: "2020-05-24 09:57"
 
 - chrono_literals :
     - using namespace std::chrono_literals;
-    - now you can use std::this_thread::sleep_for(1s); //same as std::chrono::seconds(1)
+    - now you can use std:: this_thread ::sleep_for(1s); //same as std::chrono::seconds(1)
 
 
 ```cpp
