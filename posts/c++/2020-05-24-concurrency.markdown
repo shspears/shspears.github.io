@@ -16,9 +16,9 @@ date: "2020-05-24 09:57"
 - Thread [Functions](#thread-functions)
 - [Task Based](#task-based-concurrency) Concurrency
 - [std::async](#stdasync)
-- [std::future](#std--future) and some [functions](#std--future-functions)
+- [std::future](#stdfuture) and some [functions](#stdfuture-functions)
 - [Launch Policies](#launch-policies)
-- [std::promise](#std--promise)
+- [std::promise](#stdpromise)
 - [Exceptions](#exceptions)
 
 
