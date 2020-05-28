@@ -213,13 +213,13 @@ date: "2020-05-24 09:57"
 - Nested namespace within std - std::this_thread
     - std::this_thread::get_id() - get the pid of the thread this is called from
     - std::this_thread::sleep_for(std::chrono::seconds(1))
-- std::thread::hardware_concurrency() - get the number of cores of the CPU the program is running on
+- std:: thread ::hardware_concurrency() - get the number of cores of the CPU the program is running on
 - thread.native_handle() - returns a HANDLE on Windows, pThread on Linux
 - SetThreadDescription() - in Windows.h - used to name a thread (for debugging)
 
 - chrono_literals :
     - using namespace std::chrono_literals;
-    - now you can use std:: this_thread ::sleep_for(1s); //same as std::chrono::seconds(1)
+    - now you can use std::this_thread::sleep_for(1s); //same as std::chrono::seconds(1)
 
 
 ```cpp
