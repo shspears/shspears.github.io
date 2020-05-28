@@ -15,7 +15,7 @@ date: "2020-05-24 09:57"
 - [Sharing Resources](#sharing-resources-between-threads) between Threads
 - Thread [Functions](#thread-functions)
 - [Task Based](#task-based-concurrency) Concurrency
-- [std::async](#std::async)
+- [std::async](#stdasync)
 - [std::future](#std--future) and some [functions](#std--future-functions)
 - [Launch Policies](#launch-policies)
 - [std::promise](#std--promise)
