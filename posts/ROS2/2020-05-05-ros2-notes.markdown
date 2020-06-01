@@ -29,7 +29,20 @@ Useful for seeing all ROS environment variables to make sure things are installe
 Check to see if ROS is properly added to the PATH
 
       echo $PATH | grep ROS
+      
+Add a timestamp to logger 
+ 
+      export RCUTILS_CONSOLE_OUTPUT_FORMAT="[{severity} {time}] [{name}]: {message} ({function_name}() at {file_name}:{line_number})"
+      
+Enable colourized output of ROS2 logging
 
+      export RCUTILS_COLORIZED_OUTPUT=0 #no colour
+      export RCUTILS_COLORIZED_OUTPUT=1
+      
+Enable Line buffering (this should be default to ensure proper order of logs within the system
+
+      export RCUTILS_CONSOLE_STDOUT_LINE_BUFFERED=1
+      
 ---
 
 
