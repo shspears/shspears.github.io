@@ -20,3 +20,4 @@
 ### Links
 
 - [Awesome ROS2](https://github.com/fkromer/awesome-ros2) is a great resource. More comprehensive than this will ever be!
+- [Logging Config](https://index.ros.org/doc/ros2/Concepts/Logging/#logging-console-output-configuration)
